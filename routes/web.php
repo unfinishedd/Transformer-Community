@@ -1,5 +1,11 @@
 <?php
 
+
+use App\Models\Post;
+use App\Models\User;
+use App\Http\Controllers\HomeController;
+use App\Models\Category;
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopicController;
 
@@ -14,9 +20,7 @@ use App\Http\Controllers\TopicController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -24,4 +28,16 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/topic/{topic}', [TopicController::class, 'showTopic']);
+Route::get('posts/{post:slug}', [PostsController::class, 'postDetail']);
+
+Route::get('categories/{category:slug}', function (Category $category) {
+    return view('posts', [
+        'posts' => $category->posts
+    ]);
+});
+
+Route::get('author/{author:username}', function (User $author) {
+    return view('posts', [
+        'posts' => $author->posts
+    ]);
+});

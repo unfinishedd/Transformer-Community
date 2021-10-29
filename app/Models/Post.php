@@ -9,15 +9,17 @@ class Post extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
 
-    protected $fillable = ['user_id', 'category_id', 'slug', 'title', 'excerpt', 'body'];
+    protected $guarded = [
+        'id'
+    ];
 
     protected $with = ['category', 'author'];
-    
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
 
     public function category()
     {
@@ -26,8 +28,6 @@ class Post extends Model
 
     public function author()
     {
-        return $this->belongsTo(user::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
-
-
