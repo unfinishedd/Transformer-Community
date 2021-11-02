@@ -1,6 +1,20 @@
 body {
-    background-color: rgb(64, 0, 255);
+    background-color: rgb(255, 255, 255);
 }
+
+
+.category_block li:hover {
+    background-color: rgba(255, 172, 17, 0.657);
+}
+
+.category_block li:hover a {
+    color: rgb(45, 0, 82);
+}
+
+.category_block li a {
+    color: rgb(0, 0, 0);
+}
+
 
 @media only screen and (min-width: 0px) and (max-width: 819px) {
     .d-sm-none {

@@ -38,178 +38,94 @@
 
 @yield('navbar')
 
-    <!-- Page Container -->
-    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
 
-        <!-- The Grid -->
-        <div class="w3-row">
+    <!-- The Grid -->
+    <div class="w3-row">
 
-            <!-- Left Column -->
-            <div class="w3-col m3">
+        <!-- Left Column -->
+        <div class="w3-col m3">
 
-                @yield('left-col')
+            @yield('left-col')
 
-                <!-- Middle Column -->
-                <div class="w3-col m7">
+            <!-- Middle Column -->
+            <div class="w3-col m7">
 
-                    <div class="w3-row-padding">
-                        <div class="w3-col m12">
-                            <div class="w3-card w3-round w3-white">
-                                <div class="w3-container w3-padding">
-                                    <h6 class="w3-opacity">Transformers Community</h6>
-                                    <p contenteditable="true" class="w3-border w3-padding">Status: Feeling great</p>
-                                    <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> Post</button>
-                                </div>
+                <div class="w3-row-padding">
+                    <div class="w3-col m12">
+                        <div class="w3-card w3-round w3-white">
+                            <div class="w3-container w3-padding">
+                                <h6 class="w3-opacity">Transformers Community</h6>
+                                <p contenteditable="true" class="w3-border w3-padding">Status: Feeling great</p>
+                                <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> Post</button>
                             </div>
                         </div>
                     </div>
-
-                    @yield('content')
-
-
-
-
-                    <!-- End Middle Column -->
                 </div>
 
+                @yield('content')
 
 
-                    @yield('right-col')
 
-                    <div class="w3-card w3-round w3-white w3-center">
-                        <div class="w3-container">
-                            <p>Friend Request</p>
-                            <img src="{{asset('images/female-icon.jpg')}}" alt="Avatar" style="width:50%"><br>
-                            <span>Jane Doe</span>
-                            <div class="w3-row w3-opacity">
-                                <div class="w3-half">
-                                    <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
-                                </div>
-                                <div class="w3-half">
-                                    <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
-                                </div>
-                            </div>
+
+                <!-- End Middle Column -->
+            </div>
+
+
+
+            @yield('right-col')
+
+            <div class="w3-card w3-round w3-white w3-center">
+                <div class="w3-container">
+                    <p>Friend Request</p>
+                    <img src="{{asset('images/female-icon.jpg')}}" alt="Avatar" style="width:50%"><br>
+                    <span>Jane Doe</span>
+                    <div class="w3-row w3-opacity">
+                        <div class="w3-half">
+                            <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
+                        </div>
+                        <div class="w3-half">
+                            <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
                         </div>
                     </div>
-                    <br>
-
-                    <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
-                        <p>ADS</p>
-                    </div>
-                    <br>
-
-                    <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
-                        <p><i class="fa fa-bug w3-xxlarge"></i></p>
-                    </div>
-
-                    <!-- End Right Column -->
                 </div>
+            </div>
+            <br>
 
-                <!-- End Grid -->
+            <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
+                <p>ADS</p>
+            </div>
+            <br>
+
+            <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
+                <p><i class="fa fa-bug w3-xxlarge"></i></p>
             </div>
 
-            <!-- End Page Container -->
-        </div>
-        <br>
-
-        <!-- Footer -->
-
-
-
-
-        <!--
-<body class="antialiased">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Transformers Community</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
-                </ul>
-
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-
-                <a href="{{ route('login') }}" class="btn btn-info">Login</a>
-                <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
-
-            </div>
-        </div>
-    </nav>
-    <div class="relative flex items-top justify-center min-h-screen sm:items-center py-4 sm:pt-0">
-        @if (Route::has('login'))
-        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-            @auth
-            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-            @else
-            <!--    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-          -->
-        @if (Route::has('register'))
-        <!--     <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                       @endif
-            @endauth
-        </div>
-        @endif
-
-
-        <div class="container">
-            @yield('content')
+            <!-- End Right Column -->
         </div>
 
-
-
+        <!-- End Grid -->
     </div>
--->
-        <script>
-            // Toggle between hiding and showing blog replies/comments
-            document.getElementById("myBtn").click();
 
-            function myFunction(id) {
-                var x = document.getElementById(id);
-                if (x.className.indexOf("w3-show") == -1) {
-                    x.className += " w3-show";
-                } else {
-                    x.className = x.className.replace(" w3-show", "");
-                }
-            }
+    <!-- End Page Container -->
+</div>
+<br>
 
-            function likeFunction(x) {
-                x.style.fontWeight = "bold";
-                x.innerHTML = "✓ Liked";
-            }
-        </script>
+<script>
+    // Toggle between hiding and showing blog replies/comments
+
+    function likeFunction(x) {
+        x.style.fontWeight = "bold";
+        x.innerHTML = "✓ Liked";
+    }
+</script>
 
 
 
-        <footer>
-            @yield('footer')
-        </footer>
+<footer>
+    @yield('footer')
+</footer>
 
 </body>
 
