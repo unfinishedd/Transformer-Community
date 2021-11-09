@@ -8,16 +8,17 @@
 @foreach($posts as $post)
 
 <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-    <img src="/w3images/avatar2.png" alt="{{ $post->user_id }}" class="w3-left w3-circle w3-margin-right" style="width:60px">
+    <img src="{{url('/images/male-icon.jpg')}}" alt="" class="w3-left w3-circle w3-margin-right" style="width:60px">
     <span class="w3-right w3-opacity">{{ $post->updated_at }}</span>
     <h4>{{ $post->title}}</h4><br>
     <hr class="w3-clear">
     <p>{{ $post->excerpt }}</p>
     <div class="w3-row-padding" style="margin:0 -16px">
-
-        <div class="w3-half">
-            <img src="" style="width:100%" alt="{{ $post->category_id }}" class="w3-margin-bottom">
-        </div><br>
+        <br>
+        <h7>
+            By <a href="/author/{{ $post->author->username }}">{{ $post->author->name }}</a> in <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a>
+        </h7>
+        
         <div class="w3-half">
             <img src="" style="width:100%" alt="" class="w3-margin-bottom">
         </div>
@@ -46,7 +47,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img src="./images/logo.svg" class="c-logo-80 d-none d-lg-block">
+                <img src="{{url('/images/TC.svg')}}" alt="" width="35" height="30" class="d-inline-block align-text-top">
+                <span style="font-size: 16px; font-family: DN Pro DN Pro Bold;color: #FC9C72;">TRANSFORMERS<span style="font-size: 12px;color: #806CFF;">COMMUNITY</span></span>
             </a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -60,27 +62,30 @@
                         <a class="nav-link c-tw" href="#">Over Ons</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link c-tw" href="#">Contact</a>
+                        <a class="nav-link c-tw" href="footer">Contact</a>
                     </li>
                 </ul>
+
                 <div class="d-flex justify-content-end align-items-center">
                     @if (Route::has('login'))
                     <div class="d-flex align-items-center">
                         @auth
-                        <a href="{{ url('/dashboard') }}" class="btn c-titles-font c-imp-button m-2">Dashboard</a>
+                                     <div>{{ Auth::user()->name }}</div>
                         @else
                         @if (Route::has('register'))
                         <a href="{{ route('register') }}" class="btn c-titles-font c-link-cw">Register</a>
                         @endif
                         <a href="{{ route('login') }}" class="btn c-titles-font c-imp-button m-2">Login</a>
+                               
                         @endauth
                     </div>
                     @endif
                 </div>
 
                 <!-- Settings Dropdown -->
-                <div class="hidden sm:flex sm:items-center sm:ml-6">
-                    <div>{{ Auth::user()->email }}</div>
+                <div class="">
+                    @auth
+
 
 
 
@@ -90,11 +95,10 @@
 
                         <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                            {{ __('Log Out') }}
+                            <button class= "btn c-titles-font c-imp-button m-2">{{ __('Log Out') }}</button>
                         </x-dropdown-link>
                     </form>
-
-
+                    @endauth
                 </div>
             </div>
         </div>
@@ -129,7 +133,7 @@
         @section('left-col')
         <!--DIT KOMT LINKS-->
 
-        
+
         <!-- CATEGORIES -->
 
         <div class="w3-container">

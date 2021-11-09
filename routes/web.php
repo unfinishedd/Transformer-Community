@@ -8,7 +8,11 @@ use App\Models\Category;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopicController;
-
+use App\Models\Article;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Faker\Generator as Faker;
+require __DIR__.'/auth.php';
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,13 +24,27 @@ use App\Http\Controllers\TopicController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::post('/', function (Faker $faker) {
+    Post::create([
+        'user_id' => Auth::id(),
+        'category_id' => request('category_id'),
+        'title' => request('title'),
+        'excerpt' => request('excerpt'),
+        'slug' => $faker->slug(),
+        'body' => request('body'),
+    ]);
+    return redirect('/');
+});
 
-require __DIR__.'/auth.php';
+
+// Route::get('/', [HomeController::class, 'index']);
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
 
 Route::get('posts/{post:slug}', [PostsController::class, 'postDetail']);
 
@@ -40,4 +58,59 @@ Route::get('author/{author:username}', function (User $author) {
     return view('posts', [
         'posts' => $author->posts
     ]);
+});
+
+
+// -------------------------------------------------------------------------------------
+
+
+Route::get('/create',function(){
+    return view('create');
+});
+
+Route::post('/create',function(){
+    $validate_data = Validator::make(request()->all(),[
+        'title' => 'required|min:10|max:50',
+        'body' => 'required'
+    ],[
+        'title.required' => 'Het titel veld moet nog ingevuld worden.',
+        'body.required' => 'Het body veld moet nog ingevuld worden.'
+    ])->validated();
+    Article::create([
+        'title' => $validate_data['title'],
+        'body' => $validate_data['body']
+    ]);
+    return redirect('/create');
+});
+
+Route::get('/articles/{id}/update',function($id){
+    $article = Article::find($id);
+    return view('update',[
+        'article' => $article
+    ]);
+});
+
+Route::post('/articles/{id}/edit',function($id){
+    $validate_data = Validator::make(request()->all(),[
+        'title' => 'required|min:10|max:50',
+        'body' => 'required'
+    ],[
+        'title.required' => 'Het titel veld moet nog ingevuld worden.',
+        'body.required' => 'Het body veld moet nog ingevuld worden.'
+    ])->validated();
+    $article = Article::findOrFail($id);
+    $article->update($validate_data);
+    return back();
+});
+
+Route::get('/articles',function(){
+    return view('index',[
+        'articles' => Article::all()
+    ]);
+});
+
+Route::delete('/articles/{id}',function($id){
+    $article = Article::findOrFail($id);
+    $article->delete();
+    return back();
 });

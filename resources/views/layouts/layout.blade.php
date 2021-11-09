@@ -33,7 +33,6 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
         }
     </style>
-
 </head>
 
 @yield('navbar')
@@ -51,64 +50,84 @@
 
             <!-- Middle Column -->
             <div class="w3-col m7">
+                @auth
+                <title>Bericht maken | Transformers Community</title>
+                <link href="{{ url('/css/create.css') }}" rel="stylesheet">
+                <link rel="icon" href="image/icontc.png" sizes="32x32" />
 
-                <div class="w3-row-padding">
-                    <div class="w3-col m12">
-                        <div class="w3-card w3-round w3-white">
-                            <div class="w3-container w3-padding">
-                                <h6 class="w3-opacity">Transformers Community</h6>
-                                <p contenteditable="true" class="w3-border w3-padding">Status: Feeling great</p>
-                                <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> Post</button>
+                <div class="wrapper">
+                    <div class="title">
+                        <h1>Schrijf een bericht</h1>
+                    </div>
+                    <form action="/create" method="POST">
+                        @csrf
+                        <div class="contact-form">
+                            <div class="input-fields">
+                                <input type="text" name="user_id" class="input" placeholder="User_id">
+                                <input type="text" class="input" name="picture" placeholder="Foto url">
                             </div>
-                        </div>
-                    </div>
+                            <div class="msg">
+                                <textarea name="content" cols="30" rows="10" placeholder="Bericht"></textarea>
+                                <button class="btn">Send</button>
+                            </div>
+                    </form>
                 </div>
-
-                @yield('content')
-
-
-
-
-                <!-- End Middle Column -->
+                <a href="/" class="close">
             </div>
+            @endauth
 
 
 
-            @yield('right-col')
 
-            <div class="w3-card w3-round w3-white w3-center">
-                <div class="w3-container">
-                    <p>Friend Request</p>
-                    <img src="{{asset('images/female-icon.jpg')}}" alt="Avatar" style="width:50%"><br>
-                    <span>Jane Doe</span>
-                    <div class="w3-row w3-opacity">
-                        <div class="w3-half">
-                            <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
-                        </div>
-                        <div class="w3-half">
-                            <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
+            @yield('content')
 
-            <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
-                <p>ADS</p>
-            </div>
-            <br>
 
-            <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
-                <p><i class="fa fa-bug w3-xxlarge"></i></p>
-            </div>
 
-            <!-- End Right Column -->
+
+            <!-- End Middle Column -->
         </div>
 
-        <!-- End Grid -->
+
+
+        @yield('right-col')
+
+        @auth
+        <div class="w3-card w3-round w3-white w3-center">
+            <div class="w3-container">
+                <p>Friend Request</p>
+                <img src="{{url('/images/iconnn.webp')}}" alt="Avatar" style="width:50%"><br>
+                <span>Jessica Williams
+                    <!--{{ $post->author->name }}-->
+                </span>
+                <div class="w3-row w3-opacity">
+                    <div class="w3-half">
+                        <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
+                    </div>
+                    <div class="w3-half">
+                        <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        @endauth
+
+        <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
+            <p>ADS</p>
+        </div>
+        <br>
+
+        <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
+            <p><i class="fa fa-bug w3-xxlarge"></i></p>
+        </div>
+
+        <!-- End Right Column -->
     </div>
 
-    <!-- End Page Container -->
+    <!-- End Grid -->
+</div>
+
+<!-- End Page Container -->
 </div>
 <br>
 
