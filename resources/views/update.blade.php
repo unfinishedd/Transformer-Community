@@ -1,5 +1,3 @@
-@section('content')
-
 @if($errors->any())
     <div style="color:red">
         <ul>

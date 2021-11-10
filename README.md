@@ -1,4 +1,4 @@
-   
+\
 
 # Transformers Community
 
@@ -38,6 +38,7 @@ List the ready features here:
 
 ## Project Status
 Project is: _in progress_. 
+Trello page: [Trello] (https://trello.com/b/sg5JkROM/transformers-community).
 
 ## Contact
 Created by [@unfinished](https://www.unfinishedd.nl)  

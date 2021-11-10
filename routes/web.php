@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopicController;
 use App\Models\Article;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
-use Faker\Generator as Faker;
 require __DIR__.'/auth.php';
 /*
 |--------------------------------------------------------------------------
@@ -24,22 +22,7 @@ require __DIR__.'/auth.php';
 |
 */
 
-
-Route::post('/', function (Faker $faker) {
-    Post::create([
-        'user_id' => Auth::id(),
-        'category_id' => request('category_id'),
-        'title' => request('title'),
-        'excerpt' => request('excerpt'),
-        'slug' => $faker->slug(),
-        'body' => request('body'),
-    ]);
-    return redirect('/');
-});
-
-
-// Route::get('/', [HomeController::class, 'index']);
-
+Route::get('/', [HomeController::class, 'index']);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
