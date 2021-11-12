@@ -118,7 +118,7 @@
         <div class="w3-card w3-round w3-white w3-center">
             <div class="w3-container">
                 <p>Upcoming Events:</p>
-                <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
+                <img src="https://www.rtlnieuws.nl/sites/default/files/content/images/2021/09/07/apple-event.png?itok=ln72hQdr&offsetX=0&offsetY=19&cropWidth=1978&cropHeight=1113&width=1024&height=576&impolicy=dynamic" alt="Forest" style="width:100%;">
                 <p><strong>Holiday</strong></p>
                 <p>Friday 15:00</p>
                 <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
